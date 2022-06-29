@@ -1,6 +1,6 @@
-package com.wendellwoney.Controller;
+package com.wendellwoney.rest.Controller;
 
-import com.wendellwoney.Model.ResponseModel;
+import com.wendellwoney.rest.Model.ResponseModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

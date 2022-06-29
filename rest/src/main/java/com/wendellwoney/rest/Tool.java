@@ -1,4 +1,4 @@
-package com.wendellwoney;
+package com.wendellwoney.rest;
 
 import java.util.UUID;
 

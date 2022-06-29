@@ -1,15 +1,15 @@
-package com.wendellwoney.Connection;
+package com.wendellwoney.queue.Connection;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
-@Component
+@Configuration
 public class MQConnection {
 
     @Value("${rabbitmq.exchange}")
@@ -21,7 +21,7 @@ public class MQConnection {
     @Value("${rabbitmq.queue.result}")
     private String queueResult;
 
-    private AmqpAdmin amqpAdmin;
+    private final AmqpAdmin amqpAdmin;
 
     public MQConnection(AmqpAdmin amqpAdmin) {
         this.amqpAdmin = amqpAdmin;

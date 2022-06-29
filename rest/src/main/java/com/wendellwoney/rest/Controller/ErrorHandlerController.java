@@ -1,6 +1,6 @@
-package com.wendellwoney.Controller;
+package com.wendellwoney.rest.Controller;
 
-import com.wendellwoney.Model.ResponseModel;
+import com.wendellwoney.rest.Model.ResponseModel;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

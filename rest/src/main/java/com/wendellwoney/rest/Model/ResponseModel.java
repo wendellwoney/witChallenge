@@ -1,4 +1,4 @@
-package com.wendellwoney.Model;
+package com.wendellwoney.rest.Model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
