@@ -7,11 +7,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@PropertySource("classpath:application.properties")
+@PropertySources({
+        @PropertySource("classpath:rest.properties"),
+        @PropertySource("classpath:queue.properties")
+})
 @EnableWebMvc
 public class RestApplication {
     @Autowired
