@@ -12,6 +12,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 @SpringBootApplication(scanBasePackages = "com.wendellwoney")
 @PropertySources({
@@ -37,5 +41,14 @@ public class RestApplication {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         tomcat.addContextValves(new LogbackValve());
         return tomcat;
+    }
+
+    @Bean
+    public Docket swagger() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
     }
 }
