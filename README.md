@@ -37,23 +37,23 @@ springfox.documentation.swagger-ui.base-url=/documentation *UI BASE SWAGGER*
 
 queue.properties
 ```
-spring.rabbitmq.host=localhost     *RABBITMQ HOST*
-spring.rabbitmq.port=5672          *RABBITMQ PORT*
-spring.rabbitmq.username=admin     *RABBITMQ USER*
-spring.rabbitmq.password=123456    *RABBITMQ PASSWORD*
+spring.rabbitmq.host=localhost                             *RABBITMQ HOST*
+spring.rabbitmq.port=5672                                  *RABBITMQ PORT*
+spring.rabbitmq.username=admin                             *RABBITMQ USER*
+spring.rabbitmq.password=123456                            *RABBITMQ PASSWORD*
 
-rabbitmq.exchange=witchallenge     *RABBITMQ EXCHANGE*
-rabbitmq.queue.operation=operation *RABBITMQ QUEUE OPERATION*
-rabbitmq.queue.result=result       *RABBITMQ QUEUE RESULT*
+rabbitmq.exchange=witchallenge                             *RABBITMQ EXCHANGE*
+rabbitmq.queue.operation=operation                         *RABBITMQ QUEUE OPERATION*
+rabbitmq.queue.result=result                               *RABBITMQ QUEUE RESULT*
 ```
 
 calculator.properties
 ```
-server.port=8081                           *SERVER PORT*
-spring.rabbitmq.listener.direct.prefetch=2 *RABBITMQ PREFETCH*
-spring.rabbitmq.listener.type=direct       *RABBITMQ TYPE LISTENER*
-arbitrary.precission=5                     *ARBITRATY PRECISSION* 
-arbitrary.scale=4                          *ARBITRATY SCALE* 
+server.port=8081                                           *SERVER PORT*
+spring.rabbitmq.listener.direct.prefetch=2                 *RABBITMQ PREFETCH*
+spring.rabbitmq.listener.type=direct                       *RABBITMQ TYPE LISTENER*
+arbitrary.precission=5                                     *ARBITRATY PRECISSION* 
+arbitrary.scale=4                                          *ARBITRATY SCALE* 
 ``` 
 
 docker-compose.yml
