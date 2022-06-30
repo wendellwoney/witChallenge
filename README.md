@@ -49,7 +49,7 @@ rabbitmq.queue.result=result       *RABBITMQ QUEUE RESULT*
 
 calculator.properties
 ```
-server.port=8081 *SERVER PORT*
+server.port=8081                           *SERVER PORT*
 spring.rabbitmq.listener.direct.prefetch=2 *RABBITMQ PREFETCH*
 spring.rabbitmq.listener.type=direct       *RABBITMQ TYPE LISTENER*
 arbitrary.precission=5                     *ARBITRATY PRECISSION* 
