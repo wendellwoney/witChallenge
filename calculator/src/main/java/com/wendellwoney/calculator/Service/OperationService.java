@@ -63,6 +63,9 @@ public class OperationService {
     }
 
     private Double division (Double valueA, Double valueB) throws OperationException {
+        if (valueB == 0) {
+            return 00d;
+        }
         return new Tool().numberPrecision((valueA / valueB), this.getPrecision(), this.getScale());
     }
 

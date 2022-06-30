@@ -72,4 +72,22 @@ public class IndexController implements IIndexController {
     public ResponseEntity<ArrayList<ResponseModel>> results () {
         return ResponseEntity.ok(Result.getResultResponse());
     }
+
+    @ApiOperation(value = "Return result operation")
+    @Override
+    public ResponseEntity<ResponseModel> result(String uuid) {
+        try {
+            ResponseModel result = Result.getResult(uuid);
+            if (result == null) {
+                return ResponseEntity.badRequest().body(new ResponseModel(true, "Operation not found"));
+            }
+
+            return ResponseEntity.ok(Result.getResult(uuid));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.badRequest().body(new ResponseModel(true, e.getMessage()));
+        }
+    }
+
+
 }
