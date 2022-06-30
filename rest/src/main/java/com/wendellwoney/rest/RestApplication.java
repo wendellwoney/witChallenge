@@ -12,10 +12,17 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+
+import java.net.URI;
+
+import static org.springframework.web.servlet.function.RequestPredicates.GET;
+import static org.springframework.web.servlet.function.RouterFunctions.route;
 
 @SpringBootApplication(scanBasePackages = "com.wendellwoney")
 @PropertySources({
@@ -50,5 +57,11 @@ public class RestApplication {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
+    }
+
+    @Bean
+    RouterFunction<ServerResponse> routerFunction() {
+        return route(GET("/documentation"), req ->
+                ServerResponse.temporaryRedirect(URI.create("/documentation/swagger-ui/index.html")).build());
     }
 }
