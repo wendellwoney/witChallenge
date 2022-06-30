@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.wendellwoney")
 @PropertySources({
         @PropertySource("classpath:calculator.properties"),
         @PropertySource("classpath:queue.properties")

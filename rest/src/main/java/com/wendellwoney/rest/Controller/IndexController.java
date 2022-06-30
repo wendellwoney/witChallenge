@@ -1,12 +1,16 @@
 package com.wendellwoney.rest.Controller;
 
 import com.wendellwoney.rest.Model.ResponseModel;
-import com.wendellwoney.rest.Service.IndexService;
-import com.wendellwoney.rest.Service.OperationException;
+import com.wendellwoney.queue.Exception.OperationException;
+import com.wendellwoney.rest.Queue.Result;
 import com.wendellwoney.rest.Service.IIndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 @RestController
 public class IndexController implements IIndexController {
@@ -33,9 +37,9 @@ public class IndexController implements IIndexController {
     }
 
     @Override
-    public ResponseEntity<ResponseModel> mutiply(Double valueOne, Double valueTwo) {
+    public ResponseEntity<ResponseModel> multiply(Double valueOne, Double valueTwo) {
         try {
-            return ResponseEntity.ok(service.mutiply(valueOne,valueTwo));
+            return ResponseEntity.ok(service.multiply(valueOne,valueTwo));
         } catch (OperationException e) {
             return ResponseEntity.badRequest().body(new ResponseModel(true, e.getMessage()));
         }
@@ -50,4 +54,8 @@ public class IndexController implements IIndexController {
         }
     }
 
+    @Override
+    public ResponseEntity<ArrayList<ResponseModel>> results () {
+        return ResponseEntity.ok(Result.getResultResponse());
+    }
 }

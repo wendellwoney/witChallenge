@@ -2,20 +2,20 @@ package com.wendellwoney.queue.Service;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public class QueueService {
-
-    private final RabbitTemplate rabbitTemplate;
+public class QueueService implements IQueueService {
 
     @Autowired
-    public QueueService(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
+    private RabbitTemplate rabbitTemplate;
 
-    public void sender(String queue, Object message) {
-        this.rabbitTemplate.convertAndSend(queue, message);
+    public void sender(String queue, Object message, String uuid) {
+
+        this.rabbitTemplate.convertAndSend(queue, message, m -> {
+            m.getMessageProperties().setHeader("uuid", uuid);
+            return m;
+        });
     }
 }

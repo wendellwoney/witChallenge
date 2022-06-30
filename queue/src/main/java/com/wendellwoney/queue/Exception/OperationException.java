@@ -1,4 +1,4 @@
-package com.wendellwoney.rest.Service;
+package com.wendellwoney.queue.Exception;
 
 public class OperationException extends Exception{
     public OperationException(String errorMessage) {
