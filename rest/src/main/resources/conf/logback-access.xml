@@ -5,6 +5,7 @@
             <pattern>combined</pattern>
         </encoder>
     </appender>
+
     <appender name="file" class="ch.qos.logback.core.FileAppender">
         <file>accessrest.log</file>
         <encoder>
@@ -12,6 +13,15 @@
         </encoder>
     </appender>
 
+    <appender name="file-full" class="ch.qos.logback.core.FileAppender">
+        <file>accessrest.log</file>
+        <encoder>
+            <pattern>%fullRequest%n%n%fullResponse</pattern>
+        </encoder>
+    </appender>
+
     <appender-ref ref="console"/>
+    <appender-ref ref="STDOUT"/>
     <appender-ref ref="file"/>
+    <appender-ref ref="file-full"/>
 </configuration>
