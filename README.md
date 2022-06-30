@@ -24,7 +24,7 @@ git clone https://github.com/wendellwoney/witChallenge.git
 * Logback
 * Lombok
 
-## Configuring Project
+## Configuring the Project
 rest.properties
 ```
 api.path=/rest                                             *API PATH*
