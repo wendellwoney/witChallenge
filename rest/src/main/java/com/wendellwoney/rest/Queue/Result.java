@@ -18,7 +18,7 @@ public class Result {
     public static ResponseModel getResult(String uuid) {
         ResultDto result = results.get(uuid);
         if (result != null) {
-            return new ResponseModel(false, uuid, result.getResult());
+            return new ResponseModel(result.getHasError(), uuid, result.getResult());
         }
 
         return null;
@@ -36,7 +36,7 @@ public class Result {
         }
 
         for (Map.Entry<String,ResultDto> result : results.entrySet()) {
-            arrayResponseModel.add(new ResponseModel(false, result.getKey(), result.getValue().getResult()));
+            arrayResponseModel.add(new ResponseModel(result.getValue().getHasError(), result.getKey(), result.getValue().getResult()));
         }
 
         return arrayResponseModel;

@@ -1,20 +1,20 @@
 package com.wendellwoney.rest.Controller;
 
+import com.wendellwoney.rest.Controller.Interface.IIndexController;
 import com.wendellwoney.rest.Model.ResponseModel;
 import com.wendellwoney.queue.Exception.OperationException;
-import com.wendellwoney.rest.Queue.Result;
 import com.wendellwoney.rest.Service.IIndexService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Api(tags = "Operations")
 @Tag(name = "Operations", description = "Rest for operations math")
 @RestController
@@ -66,28 +66,4 @@ public class IndexController implements IIndexController {
             return ResponseEntity.badRequest().body(new ResponseModel(true, e.getMessage()));
         }
     }
-
-    @ApiOperation(value = "Return results for all operations sent")
-    @Override
-    public ResponseEntity<ArrayList<ResponseModel>> results () {
-        return ResponseEntity.ok(Result.getResultResponse());
-    }
-
-    @ApiOperation(value = "Return result operation")
-    @Override
-    public ResponseEntity<ResponseModel> result(String uuid) {
-        try {
-            ResponseModel result = Result.getResult(uuid);
-            if (result == null) {
-                return ResponseEntity.badRequest().body(new ResponseModel(true, "Operation not found"));
-            }
-
-            return ResponseEntity.ok(Result.getResult(uuid));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            return ResponseEntity.badRequest().body(new ResponseModel(true, e.getMessage()));
-        }
-    }
-
-
 }

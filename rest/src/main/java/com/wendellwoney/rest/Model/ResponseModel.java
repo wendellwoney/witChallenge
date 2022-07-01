@@ -1,6 +1,7 @@
 package com.wendellwoney.rest.Model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.wendellwoney.queue.Dto.ErrorDto;
 import com.wendellwoney.queue.Dto.ResultDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +13,9 @@ public class ResponseModel {
     private boolean hasError;
     private String message;
     private String operationId;
-
     private Double result;
+
+    private ErrorDto error;
 
     public ResponseModel(boolean hasError, String message) {
         this.hasError = hasError;
@@ -30,5 +32,10 @@ public class ResponseModel {
         this.hasError = hasError;
         this.result = result;
         this.operationId = operationId;
+    }
+
+    public ResponseModel(ErrorDto error) {
+        this.hasError = false;
+        this.error = error;
     }
 }

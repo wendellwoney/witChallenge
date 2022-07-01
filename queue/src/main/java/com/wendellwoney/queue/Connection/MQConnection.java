@@ -21,6 +21,9 @@ public class MQConnection {
     @Value("${rabbitmq.queue.result}")
     private String queueResult;
 
+    @Value("${rabbitmq.queue.error}")
+    private String queueError;
+
     private final AmqpAdmin amqpAdmin;
 
     public MQConnection(AmqpAdmin amqpAdmin) {
@@ -43,17 +46,21 @@ public class MQConnection {
     private void addQueue() {
         Queue queueOperation = this.queue(this.queueOperation);
         Queue queueResult = this.queue(this.queueResult);
+        Queue queueError = this.queue(this.queueError);
 
         DirectExchange directExchange = this.directExchange();
         Binding bindingOperation = this.binding(queueOperation,directExchange);
         Binding bindingResult = this.binding(queueResult,directExchange);
+        Binding bindingError = this.binding(queueError,directExchange);
 
         this.amqpAdmin.declareQueue(queueOperation);
         this.amqpAdmin.declareQueue(queueResult);
+        this.amqpAdmin.declareQueue(queueError);
 
         this.amqpAdmin.declareExchange(directExchange);
 
         this.amqpAdmin.declareBinding(bindingOperation);
         this.amqpAdmin.declareBinding(bindingResult);
+        this.amqpAdmin.declareBinding(bindingError);
     }
 }

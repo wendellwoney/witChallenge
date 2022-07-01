@@ -18,10 +18,14 @@ public class QueueService implements IQueueService {
 
     public void sender(String queue, Object message, String uuid) {
 
-        logger.info("Sendin rabbitmq: Exchange " +  rabbitTemplate.getConnectionFactory().getPort() + " Queue " + queue + " Uuid " + uuid);
-        this.rabbitTemplate.convertAndSend(queue, message, m -> {
-            m.getMessageProperties().setHeader("uuid", uuid);
-            return m;
-        });
+        try {
+            logger.info("Sendin rabbitmq: Exchange " +  rabbitTemplate.getConnectionFactory().getPort() + " Queue " + queue + " Uuid " + uuid);
+            this.rabbitTemplate.convertAndSend(queue, message, m -> {
+                m.getMessageProperties().setHeader("uuid", uuid);
+                return m;
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

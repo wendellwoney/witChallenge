@@ -15,16 +15,8 @@ public class OperationConsumer {
     private OperationService service;
 
     @RabbitListener(queues = "${rabbitmq.queue.operation}")
-    private void consumer(OperationDto operationDto, @Header("uuid") String uuid) throws OperationException {
-        try{
-           try {
-               this.service.calculator(operationDto, uuid);
-           } catch (Exception e) {
-               throw new OperationException(e.getMessage());
-           }
-        } catch (Exception e) {
-            throw new OperationException(e.getMessage());
-        }
+    private void consumer(OperationDto operationDto, @Header("uuid") String uuid) {
+        this.service.calculator(operationDto, uuid);
     }
 
 }

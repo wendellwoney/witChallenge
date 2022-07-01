@@ -9,10 +9,11 @@ import java.io.Serializable;
 @Setter
 public class ResultDto implements Serializable {
 
+    private Boolean hasError;
     private Double result;
 
-    public ResultDto(Double result) {
+    public ResultDto(Double result, Boolean hasError) {
         this.result = result;
+        this.hasError = hasError;
     }
-
 }
